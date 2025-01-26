@@ -3,7 +3,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import joblib
-import matplotlib.pyplot as plt
 
 # Load dataset and combine email content with subject for text processing
 df = pd.read_csv(r"Data\Phishing_email_dataset.csv")
@@ -33,16 +32,6 @@ print(f"Accuracy: {accuracy}")
 print(f"Precision: {precision}")
 print(f"Recall: {recall}")
 print(f"F1-Score: {f1}")
-
-# Plot Actual vs Predicted labels
-plt.scatter(range(len(y_test)), y_test, color='blue', label='Actual', alpha=0.6)
-plt.scatter(range(len(y_pred)), y_pred, color='red', label='Predicted', alpha=0.6)
-
-plt.title('Actual vs Predicted')
-plt.xlabel('Sample Index')
-plt.ylabel('Label (0 = Legitimate, 1 = Phishing)')
-plt.legend()
-plt.show()
 
 # Uncomment to save the trained model
 joblib.dump(model, r'models\model_Naive_Bayes')
